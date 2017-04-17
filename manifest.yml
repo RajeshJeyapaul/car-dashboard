@@ -1,0 +1,19 @@
+---
+declared-services:
+  conversation-service:
+    label: conversation
+    plan: free
+   NLU:
+    label: natural_language_understanding
+    plan: free plan 
+applications:
+- name: car-dashboard
+  command: npm start
+  path: .
+  memory: 256M
+  instances: 1
+  services:
+  - conversation-service
+  - NLU
+  env:
+    NPM_CONFIG_PRODUCTION: false
