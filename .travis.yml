@@ -12,9 +12,9 @@ deploy:
   api: https://api.ng.bluemix.net
   username: $CF_USERNAME
   password: $CF_PASSWORD
-  name: conversation-simple
-  organization: WatsonPlatformServices
+  name: car-dashboard
+  organization: WatsonISA
   space: demos
   on:
-    repo: watson-developer-cloud/conversation-simple
+    repo: WatsonISA/car-dashboard
     branch: release
