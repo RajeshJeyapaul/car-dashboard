@@ -1,10 +1,10 @@
 # Car Dashboard Application
-[![Build Status](https://travis-ci.org/watson-developer-cloud/conversation-simple.svg?branch=master)](http://travis-ci.org/watson-developer-cloud/conversation-simple)
-[![codecov.io](https://codecov.io/github/watson-developer-cloud/conversation-simple/coverage.svg?branch=master)](https://codecov.io/github/watson-developer-cloud/conversation-simple?branch=master)
+[![Build Status](https://travis-ci.org/watson-developer-cloud/conversation-simple.svg?branch=master)](http://travis-ci.org/WatsonISA/car-dashboard)
+[![codecov.io](https://codecov.io/github/WatsonISA/car-dashboard/coverage.svg?branch=master)](https://codecov.io/github/WatsonISA/car-dashboard?branch=master)
 
 This application demonstrates how the Conversation service uses intent capabilities in a simple chat interface.
 
-[See the app demo](http://conversation-simple.mybluemix.net/).
+[See the app demo](http://car-dashboard.mybluemix.net/).
 
 For more information about Conversation, see the [detailed documentation](http://www.ibm.com/watson/developercloud/doc/conversation/overview.shtml).
 
@@ -49,7 +49,7 @@ understands that in both cases your intent is the same and responds accordingly.
 ## Deploy the App
 1 Select Deploy to Bluemix.
 
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; [![Deploy to Bluemix](https://bluemix.net/deploy/button.png)](https://bluemix.net/deploy?repository=https://github.com/watson-developer-cloud/conversation-simple)
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; [![Deploy to Bluemix](https://bluemix.net/deploy/button.png)](https://bluemix.net/deploy?repository=https://github.com/WatsonISA/car-dashboard)
 
 2 Log in with an existing Bluemix account or sign up.
 
