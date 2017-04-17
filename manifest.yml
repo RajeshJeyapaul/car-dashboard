@@ -3,10 +3,10 @@ declared-services:
   conversation-service:
     label: conversation
     plan: free
-   NLU:
+    NLU:
     label: natural_language_understanding
-    plan: free plan 
-applications:
+    plan: free plan
+  applications:
 - name: car-dashboard
   command: npm start
   path: .
