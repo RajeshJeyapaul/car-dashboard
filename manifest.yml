@@ -7,7 +7,7 @@ declared-services:
     label: natural_language_understanding
     plan: free plan
     weather-service:
-    label:weatherinsights
+    label: weatherinsights
     plan: free
   applications:
 - name: car-dashboard
