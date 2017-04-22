@@ -1,6 +1,6 @@
 {
-  "name": "conversation-simple",
-  "description": "A simple Node.js based web app which shows how to use the Conversation API to recognize user intents.",
+  "name": "Cardashboard",
+  "description": "A simple Node.js based chat application using Conversation, NLU and Weather API",
   "version": "0.1.1",
   "main": "server.js",
   "scripts": {
@@ -21,7 +21,9 @@
     "express-csv": "0.6.0",
     "nano" : "*",
     "uuid": "2.0.2",
-    "vcap_services": "^0.2.0"
+    "vcap_services": "^0.2.0",
+    "lodash": "^4.13.1",
+    "request": "^2.67.0"
   },
   "devDependencies": {
     "babel-eslint": "^6.0.4",

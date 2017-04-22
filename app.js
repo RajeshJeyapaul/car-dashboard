@@ -54,10 +54,6 @@ var conversation = watson.conversation( {
   version: 'v1'
 } );
 
-// Create service wrapper for AlchemyAPI
-var alchemy_language = watson.alchemy_language({
-  api_key: process.env.ALCHEMY_API_KEY || 'YOUR_API_KEY'
-});
 
 /********* NLU *************/
 var NaturalLanguageUnderstandingV1 = require('watson-developer-cloud/natural-language-understanding/v1.js');
@@ -67,6 +63,8 @@ var nlu = new NaturalLanguageUnderstandingV1({
 	'version_date': '2017-02-27'
 	});
 
+var weatherURL = process.env.WEATHER_URL;
+var weather = require('./lib/weather.js')(weatherURL);
 
 // Endpoint to be call from the client side
 app.post( '/api/message', function(req, res) {
@@ -154,12 +152,36 @@ app.post( '/api/message', function(req, res) {
 			                  return res.status(err.code || 500).json(err);
 			                }
 			                //return res.json(updateMessage(payload, data));
-			                updateResponse(res, data);
-         							});
+			                //updateResponse(res, data);
+			                var weatherflag = checkWeather(data);
+			                if(weatherflag) {
+			              	   
+			              	   if(data.context.appCity != null) {
+			              		   weatherApiCall(data,"current",function(error,data)
+			              			{
+			              			   if (error)
+			              				   {return res.status(err.code || 500).json(err);}
+			              			   else
+			              				   {
+			              				 console.log('data: ' + JSON.stringify(data)); 
+			              				 return res.json(data);		              				   
+			              				   }
+			              			   
+			              			}	   
+			              		   );
+			              					              		   
+			              	   }
+			                }             	    	              	   	 
+			                else
+			                	{
+			                return res.json(data);
+			                	}
+         				});
 	  			}
 
 	  		});
 	 	}
+ 		//first time call, welcome message
  		else
  		{
 		conversation.message(payload, function(err, data) {
@@ -173,90 +195,60 @@ app.post( '/api/message', function(req, res) {
 		}
 } );
 
-/**
- * Updates the response text using the intent confidence
- * @param  {Object} input The request to the Conversation service
- * @param  {Object} response The response from the Conversation service
- * @return {Object}          The response with the updated message
- */
-function updateMessage(input, response) {
-  var responseText = null;
-  var id = null;
-  if ( !response.output ) {
-    response.output = {};
+
+
+function weatherApiCall(data,method,callback) {
+  var onResponse = function (error, body) {
+    if (error) {
+    	if (error==='NA')
+    	{
+    	data.output.text="Could not find the location";
+    	callback(null,data);
+    	}
+    	else
+    		{
+    	console.log('error: ' + error); 
+    	callback(error,null);}
+    }   
+    
+    else {
+    	console.log('body: ' + body); 
+    	
+		   var append_weather_response = (data.context.append_response && 
+					data.context.append_response === true) ? true : false;
+		   if (append_weather_response ===true)
+			   {
+			   	if(data.output.text){
+			   	var appendText="The weather in " + data.context.appCity + " is " +body.observation.wx_phrase;
+			   	appendText +=". The temperature is " +body.observation.temp + " degree celcius";
+				data.output.text=appendText;
+			   	}
+			   }
+		   
+		  
+		   callback(null,data);
+      
+    }
+  };
+  // ?q=  will be first sent to autocomplete to guess the location
+  // or ?latitude=&longitude= will go through
+  if (data.context.appCity) {
+	    
+    weather[method + "ByQuery"](data.context.appCity, {}, onResponse);
   } else {
-    if ( logs ) {
-      // If the logs db is set, then we want to record all input and responses
-      id = uuid.v4();
-      logs.insert( {'_id': id, 'request': input, 'response': response, 'time': new Date()});
-    }
-    return response;
+    weather[method + "ByGeolocation"](parseFloat(req.query.latitude), parseFloat(req.query.longitude), {}, onResponse);
   }
-  if ( response.intents && response.intents[0] ) {
-    var intent = response.intents[0];
-    // Depending on the confidence of the response the app can return different messages.
-    // The confidence will vary depending on how well the system is trained. The service will always try to assign
-    // a class/intent to the input. If the confidence is low, then it suggests the service is unsure of the
-    // user's intent . In these cases it is usually best to return a disambiguation message
-    // ('I did not understand your intent, please rephrase your question', etc..)
-    if ( intent.confidence >= 0.75 ) {
-      responseText = 'I understood your intent was ' + intent.intent;
-    } else if ( intent.confidence >= 0.5 ) {
-      responseText = 'I think your intent was ' + intent.intent;
-    } else {
-      responseText = 'I did not understand your intent';
-    }
-  }
-  response.output.text = responseText;
-  if ( logs ) {
-    // If the logs db is set, then we want to record all input and responses
-    id = uuid.v4();
-    logs.insert( {'_id': id, 'request': input, 'response': response, 'time': new Date()});
-  }
-  return response;
 }
 
-// Weather API key (https://www.wunderground.com/weather/api/)
-var weather_api_key = process.env.WEATHER_API_KEY || 'YOUR_WEATHER_API_KEY';
-function updateResponse(res, data) {
-  var weatherflag = checkWeather(data);
-  if(weatherflag) {
-   var path = null;
-   if((data.context.appCity != null) && (data.context.appST != null)) {
-     //path = '/api/' + weather_api_key + '/conditions/q/' + data.context.appST + '/' + data.context.appCity + '.json';
-     path = '/api/' + weather_api_key + '/forecast/q/' + data.context.appST + '/' + data.context.appCity + '.json';
-   }
-   if (path == null) {
-    return res.json(data)
-   }
-   var options = {
-     host: 'api.wunderground.com',
-     path: path
-   };
-   http.get(options, function(resp) {
-     var chunkText = '';
-     resp.on('data', function(chunk) {
-     chunkText += chunk.toString('utf8');
-     });
 
-     resp.on('end', function() {
-	var chunkJSON = JSON.parse(chunkText);
-	var forecast = chunkJSON.forecast.txt_forecast.forecastday[0].fcttext;
-	data.output.text = 'The weather in ' + data.context.appCity + ', ' + data.context.appST + ' will be ' + forecast;
-	return res.json(data);
-     });
-    }).on('error', function(e) {
-       console.log('failed');
-    });
-   } else {
-     return res.json(data);
-   }
-};
+
+
+
 
 function checkWeather(data) {
   //return (data.context != null) && (data.context.appCity != null) && (data.context.appST != null);
   return data.intents && data.intents.length > 0 && data.intents[0].intent === 'weather'
-     && (data.context != null) && (data.context.appCity != null) && (data.context.appST != null);
+     && (data.context != null) && (data.context.appCity != null);
 };
 
 
