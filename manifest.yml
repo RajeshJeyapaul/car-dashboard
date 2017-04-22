@@ -6,6 +6,9 @@ declared-services:
     nlu-service:
     label: natural_language_understanding
     plan: free plan
+    weather-service:
+    label:weatherinsights
+    plan: free
   applications:
 - name: car-dashboard
   command: npm start
@@ -15,5 +18,6 @@ declared-services:
   services:
   - conversation-service
   - nlu-service
+  - weather-service
   env:
     NPM_CONFIG_PRODUCTION: false
