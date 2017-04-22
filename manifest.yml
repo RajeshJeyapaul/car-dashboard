@@ -1,9 +1,9 @@
 ---
 declared-services:
-  GSC-FSS-Lab-Conversation:
+  conversation-service:
     label: conversation
     plan: free
-    NLU:
+    nlu-service:
     label: natural_language_understanding
     plan: free plan
   applications:
@@ -13,7 +13,7 @@ declared-services:
   memory: 256M
   instances: 1
   services:
-  - GSC-FSS-Lab-Conversation
-  - NLU
+  - conversation-service
+  - nlu-service
   env:
     NPM_CONFIG_PRODUCTION: false
