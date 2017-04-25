@@ -30,25 +30,28 @@ var app = express();
 app.use( express.static( './public' ) ); // load UI from public folder
 app.use( bodyParser.json() );
 
+//Get the required credentials from vcapServices
+var conversation_credentials = vcapServices.getCredentials('conversation');
+var nlu_credentials = vcapServices.getCredentials('natural-language-understanding');
+var weatherCredentials = vcapServices.getCredentials('weatherinsights');
 // Create the service wrapper
 var conversation = watson.conversation( {
   url: 'https://gateway.watsonplatform.net/conversation/api',
-  username: process.env.CONVERSATION_USERNAME || '',
-  password: process.env.CONVERSATION_PASSWORD || '',
+  username: conversation_credentials.username || '',
+  password: conversation_credentials.password || '',
   version_date: '2016-07-11',
   version: 'v1'
 } );
 
-
 /********* NLU *************/
 var NaturalLanguageUnderstandingV1 = require('watson-developer-cloud/natural-language-understanding/v1.js');
 var nlu = new NaturalLanguageUnderstandingV1({
-	username: process.env.NLU_USERNAME || '',			//Replace with your NLU Service username
-	password: process.env.NLU_PASSWORD || '',									//Replace with your NLU Service password
+	username: nlu_credentials.username || '',			//Replace with your NLU Service username
+	password: nlu_credentials.password || '',									//Replace with your NLU Service password
 	'version_date': '2017-02-27'
 	});
 
-var weatherURL = process.env.WEATHER_URL;
+var weatherURL = weatherCredentials.url;
 var weather = require('./lib/weather.js')(weatherURL);
 
 // Endpoint to be call from the client side
@@ -69,11 +72,11 @@ app.post( '/api/message', function(req, res) {
     context: {},
     input: {}
   };
-  
+
   if ( req.body ) {
     if ( req.body.input ) {
       payload.input = req.body.input;
-      
+
     }
     if ( req.body.context ) {
       // The client must maintain context/state
@@ -106,11 +109,11 @@ app.post( '/api/message', function(req, res) {
 	  			{
 		    console.log('error:', err);}
 	  		else
-	  		{	
+	  		{
 			 var nlu_output=response;
-	  
+
 			 payload.context['nlu_output']=nlu_output;
-			  	
+
 			 // identify location
 			 var entities = nlu_output.entities;
 		     var location = entities.map(function(entry) {
@@ -129,9 +132,9 @@ app.post( '/api/message', function(req, res) {
 		        				} else {
 		        	  payload.context['Location']='';
 		        						  }
-  
+
 		        // Send the input to the conversation service
-        
+
 		        conversation.message(payload, function(err, data) {
 			                if (err) {
 			                  return res.status(err.code || 500).json(err);
@@ -140,7 +143,7 @@ app.post( '/api/message', function(req, res) {
 			                //updateResponse(res, data);
 			                var weatherflag = checkWeather(data);
 			                if(weatherflag) {
-			              	   
+
 			              	   if(data.context.appCity != null) {
 			              		   weatherApiCall(data,"current",function(error,data)
 			              			{
@@ -148,15 +151,15 @@ app.post( '/api/message', function(req, res) {
 			              				   {return res.status(err.code || 500).json(err);}
 			              			   else
 			              				   {
-			              				 console.log('data: ' + JSON.stringify(data)); 
-			              				 return res.json(data);		              				   
+			              				 console.log('data: ' + JSON.stringify(data));
+			              				 return res.json(data);
 			              				   }
-			              			   
-			              			}	   
+
+			              			}
 			              		   );
-			              					              		   
+
 			              	   }
-			                }             	    	              	   	 
+			                }
 			                else
 			                	{
 			                return res.json(data);
@@ -174,7 +177,7 @@ app.post( '/api/message', function(req, res) {
 				return res.status(err.code || 500).json(err);
 			}else{
 				console.log('conversation.message :: ',JSON.stringify(data));
-				return res.json(data);						
+				return res.json(data);
 			}
 		});
 		}
@@ -192,14 +195,14 @@ function weatherApiCall(data,method,callback) {
     	}
     	else
     		{
-    	console.log('error: ' + error); 
+    	console.log('error: ' + error);
     	callback(error,null);}
-    }   
-    
+    }
+
     else {
-    	console.log('body: ' + body); 
-    	
-		   var append_weather_response = (data.context.append_response && 
+    	console.log('body: ' + body);
+
+		   var append_weather_response = (data.context.append_response &&
 					data.context.append_response === true) ? true : false;
 		   if (append_weather_response ===true)
 			   {
@@ -209,16 +212,16 @@ function weatherApiCall(data,method,callback) {
 				data.output.text=appendText;
 			   	}
 			   }
-		   
-		  
+
+
 		   callback(null,data);
-      
+
     }
   };
   // ?q=  will be first sent to autocomplete to guess the location
   // or ?latitude=&longitude= will go through
   if (data.context.appCity) {
-	    
+
     weather[method + "ByQuery"](data.context.appCity, {}, onResponse);
   } else {
     weather[method + "ByGeolocation"](parseFloat(req.query.latitude), parseFloat(req.query.longitude), {}, onResponse);
@@ -241,11 +244,11 @@ function checkWeather(data) {
 if ( cloudantUrl ) {
   // If logging has been enabled (as signalled by the presence of the cloudantUrl) then the
   // app developer must also specify a LOG_USER and LOG_PASS env vars.
-  if ( !process.env.LOG_USER || !process.env.LOG_PASS ) {
+  if ( !cloudantCredentials.username || !cloudantCredentials.password ) {
     throw new Error( 'LOG_USER OR LOG_PASS not defined, both required to enable logging!' );
   }
   // add basic auth to the endpoints to retrieve the logs!
-  var auth = basicAuth( process.env.LOG_USER, process.env.LOG_PASS );
+  var auth = basicAuth( cloudantCredentials.username, cloudantCredentials.password );
   // If the cloudantUrl has been configured then we will want to set up a nano client
   var nano = require( 'nano' )( cloudantUrl );
   // add a new API which allows us to retrieve the logs (note this is not secure)
