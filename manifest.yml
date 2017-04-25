@@ -4,8 +4,8 @@ declared-services:
     label: conversation
     plan: free
   nlu-service:
-    label: natural_language_understanding
-    plan: free plan
+    label: natural-language-understanding
+    plan: free
   weather-service:
     label: weatherinsights
     plan: free
