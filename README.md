@@ -1,4 +1,4 @@
-# Build a Car Conversation Dashboard Application Using Bluemix Watson Service 
+# Build a Car Conversation Dashboard Application Using Bluemix Watson Service
 
 ## Overview
 
@@ -12,14 +12,9 @@ Following services used from Bluemix:
 2. Watson NLU
 3. IBM Weather Company Data
 
-[See the app demo](http://car-dashboard.mybluemix.net/).
+[See the app demo](http://conversation-demo.mybluemix.net/).
 
 For more information about Conversation, see the [detailed documentation](http://www.ibm.com/watson/developercloud/doc/conversation/overview.shtml).
-
-
-Either way you deploy this app, you must have a Bluemix account and run some steps within Bluemix.
-
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[<img src="readme_images/bluemix.png" width="200"/>](#bluemix)     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[<img src="readme_images/local.png" width="200"/>](#local)
 
 ## How the app works
 The app interface is designed and trained for chatting with a cognitive car. The chat interface is on the left, and the
@@ -48,15 +43,12 @@ understands that in both cases your intent is the same and responds accordingly.
 ## Pre Requisities
 1 Ensure that you have a [Bluemix account](https://console.ng.bluemix.net/registration/).
 
-2 Ensure that you have the necessary space available in your Bluemix account. This action deploys 1 application and 1 service.
-   * You can view this on your Bluemix Dashboard. Tiles will show what space you have available.
-   * For example, for Services & APIS
-
-    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;![](readme_images/services.PNG)
+2 This action deploys 1 application and 3 services.
+   * You can view this on your Bluemix Dashboard.
 
 ## PART - 1
 ## <u>Deploy the App and explore the conversation flow</u>
-1 Select Deploy to Bluemix.
+1 Select "Deploy to Bluemix" icon below.
 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; [![Deploy to Bluemix](https://bluemix.net/deploy/button.png)](https://bluemix.net/deploy?repository=https://github.com/WatsonISA/car-dashboard)
 
@@ -65,9 +57,11 @@ understands that in both cases your intent is the same and responds accordingly.
 3 Name your app and select your REGION, ORGANIZATION, and SPACE. Then select DEPLOY.
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ![](readme_images/deploy.PNG)
 
+Note: In case Space is not listed. Please take help and create it manually.
+
 * This performs two actions:
-  - Creates the app
-  - Creates a Conversation service instance that the user needs for workspace creation
+  - Deploys the app run time.
+  - Creates a Conversation service instance, NLU Instance, Weather API instance.
 
 * The status of the deployment is shown. This can take some time.
 
@@ -77,12 +71,73 @@ understands that in both cases your intent is the same and responds accordingly.
 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;![](readme_images/viewyourapp.PNG)
 
-<a name="returnbluemix">
-5 Navigate to your Bluemix Dashboard and [import a workspace](#workspace). Setup your workspace then <b>return to these steps</b>.
-Please find the workspace here, this can be found the training folder (training/car_workspace_alchemy.json)
+<a name="workspace">
+# Import a workspace
 </a>
 
-6 After you have set up a workspace, [add the WORKSPACE_ID environment variable](#env).
+To use the app you're creating, you need to add a worksapce to your Conversation service. A workspace is a container for all the artifacts that define the behavior of your service (ie: intents, entities and chat flows). For this sample app, a workspace is provided.
+
+For more information on workspaces, see the full  [Conversation service  documentation](https://www.ibm.com/smarterplanet/us/en/ibmwatson/developercloud/doc/conversation/overview.shtml).
+
+1 Navigate to the Bluemix dashboard, select the Conversation service that you created.
+
+2 Go to the **Manage** menu item and select **Launch Tool**. This opens a new tab in your browser, where you are prompted to login if you have not done so before. Use your Bluemix credentials.
+
+3 If you are deploying through Bluemix, download the  exported file that contains the Workspace contents by clicking on the following link
+[exported JSON file](https://github.com/WatsonISA/car-dashboard) and then navigating to the training folder to find car_workspace_alchemy.json file.
+
+
+4 Select the import icon: ![](readme_images/importGA.PNG). Browse to (or drag and drop) the JSON file. Choose to import **Everything(Intents, Entities, and Dialog)**. Then select **Import** to finish importing the workspace.
+
+5 Refresh your browser. A new workspace tile is created within the tooling. Select the _menu_ button within the workspace tile, then select **View details**:
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;![Workpsace Details](readme_images/details.PNG)
+
+<a name="workspaceID">
+In the Details UI, copy the 36 character UNID **ID** field. This is the **Workspace ID**.
+</a>
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ![](readme_images/workspaceid.PNG)
+
+
+
+5 Navigate to your Bluemix Dashboard and import a workspace. Setup your workspace then <b>return to these steps</b>.
+
+6 Navigate to your bluemix dashboard using the link below
+https://console.ng.bluemix.net/dashboard/apps
+
+7 Click on the Conversation Service that was created.
+
+8 Launch the service using the Launch tool button.
+
+![](readme_images/launch-image.jpg)
+
+9 Import a workspace by clicking on the Import link
+![](readme_images/import-workspace.png)
+
+Please find the workspace details in the <b>car_workspace_alchemy.json</b> file by navigating to the <b>training</b> folder in the following link.
+https://github.com/WatsonISA/car-dashboard
+
+10 Navigate back to the workspaces as shown below
+![](readme_images/back_to_workspaces.png)
+
+11 Click on the Actions link and select <b>View details</b>
+![](readme_images/workspace_details-1.png)
+
+12 Copy the workspace id from there using the copy icon.
+![](readme_images/workspace_id.png)
+
+13 Go back to the Bluemix dashboard
+https://console.ng.bluemix.net/dashboard/apps
+
+14 Click on the Application name of the application that was created.
+
+15 Select Runtime followed by the Environment Variables tab
+
+16 Create a user defined environment Variables with name <B>WORKSPACE_ID and the value being the ID that was just copied.
+![](readme_images/vcap_entry.png)
+
+17 Save it and restart the application.
 
 
 ## Before you begin
@@ -110,35 +165,8 @@ Please find the workspace here, this can be found the training folder (training/
 3 Copy the credentials (or remember this location) for later use.
 
 
-<a name="workspace">
-# Import a workspace
-</a>
 
-To use the app you're creating, you need to add a worksapce to your Conversation service. A workspace is a container for all the artifacts that define the behavior of your service (ie: intents, entities and chat flows). For this sample app, a workspace is provided.
 
-For more information on workspaces, see the full  [Conversation service  documentation](https://www.ibm.com/smarterplanet/us/en/ibmwatson/developercloud/doc/conversation/overview.shtml).
-
-1 Navigate to the Bluemix dashboard, select the Conversation service that you created.
-
-2 Go to the **Manage** menu item and select **Launch Tool**. This opens a new tab in your browser, where you are prompted to login if you have not done so before. Use your Bluemix credentials.
-
-3 If you are deploying through Bluemix, download the [exported JSON file](https://raw.githubusercontent.com/watson-developer-cloud/conversation-simple/master/training/car_workspace_alchemy.json) that contains the Workspace contents. If deploying locally,  this was cloned and is in the training folder (training/car_workspace_alchemy.json).
-
-4 Select the import icon: ![](readme_images/importGA.PNG). Browse to (or drag and drop) the JSON file. Choose to import **Everything(Intents, Entities, and Dialog)**. Then select **Import** to finish importing the workspace.
-
-5 Refresh your browser. A new workspace tile is created within the tooling. Select the _menu_ button within the workspace tile, then select **View details**:
-
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;![Workpsace Details](readme_images/details.PNG)
-
-<a name="workspaceID">
-In the Details UI, copy the 36 character UNID **ID** field. This is the **Workspace ID**.
-</a>
-
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ![](readme_images/workspaceid.PNG)
-
-6 Return to the deploy steps that you were following:
-- For Local - [return to step 2](#returnlocal)
-- For Bluemix - [return to step 5](#returnbluemix)
 
 <a name="env">
 # Adding environment variables in Bluemix
