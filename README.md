@@ -67,6 +67,19 @@ Note: In case Space is not listed. Please take help and create it manually.
 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;![](readme_images/createproject.PNG)
 
+Note:
+* If the deployment fails it might mean that you dont have a repository. To fix this refer to the screen shots below.
+
+![](readme_images/ToolChain1.png)
+
+![](readme_images/ToolChain2.png)
+
+![](readme_images/ToolChain3.png)
+
+![](readme_images/ToolChain4.png)
+
+
+
 4 Once your app has deployed, select VIEW YOUR APP.
 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;![](readme_images/viewyourapp.PNG)
@@ -75,7 +88,7 @@ Note: In case Space is not listed. Please take help and create it manually.
 # Import a workspace
 </a>
 
-To use the app you're creating, you need to add a worksapce to your Conversation service. A workspace is a container for all the artifacts that define the behavior of your service (ie: intents, entities and chat flows). For this sample app, a workspace is provided.
+To use the app you're creating, you need to add a worksapce to your Conversation service. A workspace is a container for all the artifacts that define the behavior of your service (ie: intents, entities and chat flows).
 
 For more information on workspaces, see the full  [Conversation service  documentation](https://www.ibm.com/smarterplanet/us/en/ibmwatson/developercloud/doc/conversation/overview.shtml).
 
@@ -83,8 +96,11 @@ For more information on workspaces, see the full  [Conversation service  documen
 
 2 Go to the **Manage** menu item and select **Launch Tool**. This opens a new tab in your browser, where you are prompted to login if you have not done so before. Use your Bluemix credentials.
 
-3 If you are deploying through Bluemix, download the  exported file that contains the Workspace contents by clicking on the following link
-[exported JSON file](https://github.com/WatsonISA/car-dashboard) and then navigating to the training folder to find car_workspace_alchemy.json file.
+3 Download the exported file that contains the Workspace contents by clicking
+[exported JSON file](https://github.com/WatsonISA/car-dashboard)
+  - navigate to the training folder to find car_workspace_alchemy.json file.
+  - click on the "Raw" link which will open a browser.
+  - Select "Save As" and save the file as a json.
 
 
 4 Select the import icon: ![](readme_images/importGA.PNG). Browse to (or drag and drop) the JSON file. Choose to import **Everything(Intents, Entities, and Dialog)**. Then select **Import** to finish importing the workspace.
@@ -94,85 +110,18 @@ For more information on workspaces, see the full  [Conversation service  documen
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;![Workpsace Details](readme_images/details.PNG)
 
 <a name="workspaceID">
-In the Details UI, copy the 36 character UNID **ID** field. This is the **Workspace ID**.
-</a>
+In the Details UI, copy the 36 character UNID **ID** field. This is the **WORKSPACE_ID**.
+</a>. Retain this for the following step where we will create an environment variable
+This varibale will be the handle for the application to refer to the Conversation Service that we created.
 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ![](readme_images/workspaceid.PNG)
-
-
-
-5 Navigate to your Bluemix Dashboard and import a workspace. Setup your workspace then <b>return to these steps</b>.
-
-6 Navigate to your bluemix dashboard using the link below
-https://console.ng.bluemix.net/dashboard/apps
-
-7 Click on the Conversation Service that was created.
-
-8 Launch the service using the Launch tool button.
-
-![](readme_images/launch-image.jpg)
-
-9 Import a workspace by clicking on the Import link
-![](readme_images/import-workspace.png)
-
-Please find the workspace details in the <b>car_workspace_alchemy.json</b> file by navigating to the <b>training</b> folder in the following link.
-https://github.com/WatsonISA/car-dashboard
-
-10 Navigate back to the workspaces as shown below
-![](readme_images/back_to_workspaces.png)
-
-11 Click on the Actions link and select <b>View details</b>
-![](readme_images/workspace_details-1.png)
-
-12 Copy the workspace id from there using the copy icon.
-![](readme_images/workspace_id.png)
-
-13 Go back to the Bluemix dashboard
-https://console.ng.bluemix.net/dashboard/apps
-
-14 Click on the Application name of the application that was created.
-
-15 Select Runtime followed by the Environment Variables tab
-
-16 Create a user defined environment Variables with name <B>WORKSPACE_ID and the value being the ID that was just copied.
-![](readme_images/vcap_entry.png)
-
-17 Save it and restart the application.
-
-
-## Before you begin
-
-1 Ensure that you have a [Bluemix account](https://console.ng.bluemix.net/registration/). While you can do part of this deployment locally, you must still use Bluemix.
-
-<a name="returnlocal">
-2 In Bluemix, [create a Conversation Service](http://www.ibm.com/watson/developercloud/doc/conversation/convo_getstart.shtml).
-- Adding Service Credentials(#service-credentials)
-- [Import a workspace](#workspace)
-- Copy the [Service Credentials](#credentials) for later use.
-- <b>Return to these steps</b>
-</a>
-
-<a name="credentials">
-# Service Credentials
-</a>
-
-1 Go to the Bluemix Dashboard and select the Conversation service instance. Once there, select the **Service Credentials** menu item.
-
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;![](readme_images/credentials.PNG)
-
-2 Select **ADD CREDENTIALS**. Name your credentials then select **ADD**.
-
-3 Copy the credentials (or remember this location) for later use.
-
-
-
 
 
 <a name="env">
 # Adding environment variables in Bluemix
 </a>
 
-1 In Bluemix, open the application from the Dashboard. Select **Environment Variables**.
+1 In Bluemix, open the application from the Dashboard.(You will have to click on the Application Name) Select **Environment Variables**.
 
 2 Select **USER-DEFINED**.
 
@@ -183,6 +132,19 @@ https://console.ng.bluemix.net/dashboard/apps
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;![](readme_images/env.PNG)
 
 5 Restart your application.
+
+6 Click on the application link to execute it. Now you are all set to have a conversation!!
+
+  Here are some sample questions that you can start off with
+
+   - Can you switch on
+   - Can you find a gas station
+
+
+
+
+
+
 
 
 # Troubleshooting in Bluemix
