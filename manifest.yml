@@ -8,7 +8,7 @@ declared-services:
     plan: free
   weather-service:
     label: weatherinsights
-    plan: free
+    plan: Free-v2
 applications:
  - path: .
    name: car-dashboard
