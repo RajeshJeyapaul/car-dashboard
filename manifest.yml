@@ -3,21 +3,21 @@ declared-services:
   conversation-service:
     label: conversation
     plan: free
-    nlu-service:
+  nlu-service:
     label: natural_language_understanding
     plan: free plan
-    weather-service:
+  weather-service:
     label: weatherinsights
     plan: free
-  applications:
-- name: car-dashboard
-  command: npm start
-  path: .
-  memory: 256M
-  instances: 1
-  services:
-  - conversation-service
-  - nlu-service
-  - weather-service
-  env:
+applications:
+ - path: .
+   name: car-dashboard
+   command: npm start
+   memory: 256M
+   instances: 1
+   services:
+   - conversation-service
+   - nlu-service
+   - weather-service
+env:
     NPM_CONFIG_PRODUCTION: false
