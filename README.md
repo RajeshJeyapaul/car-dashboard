@@ -182,6 +182,82 @@ This varibale will be the handle for the application to refer to the Conversatio
 
 
 ## PART - 3
+Problem statement:
+Adding new cuisine types for Indian cuisine like Veg and Non Veg and display respective restaurants.
+
+1) Go to the Bluemix Dashboard
+
+2) Go to the Conversation service link. Click on the "Launch Tooling" link
+
+3) Go to the Entities section. Add entity - "indiancuisine".
+Add values for this entity like - Vegetarian and NonVegetarian.
+Add synonyms to both of these values like "non veg", "Non veg", "veg", "Veg".
+
+<p align="center">
+  <img width="400" height="55" src="readme_images/indiancuisine.png">
+</p>
+
+
+4) Add another value of cuisine which is "indian"
+
+<p align="center">
+  <img width="400" height="55" src="readme_images/cuisine.png">
+</p>
+
+5) Go to the Dialog section and add the condition from cuisine as displayed in the screen shot below
+for two of the condition for Indian flavours.
+
+<p align="center">
+  <img width="400" height="55" src="readme_images/indian_cuisine_branch.png">
+</p>
+
+We would add the context values for Indian Vegetarian and Non Vegetarian hotels
+
+a) Indian Vegetarian
+
+<p align="center">
+  <img width="400" height="55" src="readme_images/veg_branch.png">
+</p>
+
+Sample JSON code:
+{
+  "context": {
+    "veghotels": "A2B,Vidyarthi"
+  },
+  "output": {
+    "text": {
+      "values": [
+        "Sure thing. Navigating to the @cuisine:vegetarian restaurant.   Following $veghotels  gets great reviews. You'll be there soon."
+      ]
+    }
+  }
+}
+
+b) Non Vegetarian
+
+<p align="center">
+  <img width="400" height="55" src="readme_images/nonveg_branch.png">
+</p>
+
+Sample JSON code:
+{
+  "context": {
+    "nonveghotels": "Mass,KFC"
+  },
+  "output": {
+    "text": {
+      "values": [
+        "Sure thing. Navigating to the @cuisine:vegetarian restaurant.   Following $nonveghotels  gets great reviews. You'll be there soon."
+      ]
+    }
+  }
+}
+
+6) Add "Jump To" (see the highlighted section in the screen shot) connection to response of @cuisine
+
+<p align="center">
+  <img width="400" height="55" src="readme_images/cuisine_jumpto.png">
+</p>
 
 
 
