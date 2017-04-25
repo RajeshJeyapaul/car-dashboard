@@ -47,6 +47,7 @@ understands that in both cases your intent is the same and responds accordingly.
    * You can view this on your Bluemix Dashboard.
 
 ## PART - 1
+
 ## <u>Deploy the App and explore the conversation flow</u>
 1 Select "Deploy to Bluemix" icon below.
 
@@ -65,7 +66,7 @@ Note: In case Space is not listed. Please take help and create it manually.
 
 * The status of the deployment is shown. This can take some time.
 
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;![](readme_images/createproject.PNG)
+![](readme_images/createproject.PNG)
 
 Note:
 * If the deployment fails it might mean that you dont have a repository. To fix this refer to the screen shots below.
@@ -243,6 +244,14 @@ Sample JSON code:
 
 
 ## PART - 3
+
+Below is the architecture diagram of this application
+
+![](readme_images/architecture.jpg)
+
+Whenever the chat transcript contains a query regarding "weather" of a place, the Conversation service uses NLU to identify the entities like city / town and invokes the Weather service to get the weather details of that city / town.
+
+You can type a query like, "what is the temperature in Bangalore today ?" and the application will respond accordingly.
 
 # License
 
