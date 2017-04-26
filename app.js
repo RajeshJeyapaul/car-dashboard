@@ -34,6 +34,7 @@ app.use( bodyParser.json() );
 var conversation_credentials = vcapServices.getCredentials('conversation');
 var nlu_credentials = vcapServices.getCredentials('natural-language-understanding');
 var weatherCredentials = vcapServices.getCredentials('weatherinsights');
+var workspace = process.env.WORKSPACE_ID || vcapServices.WORKSPACE_ID;
 // Create the service wrapper
 var conversation = watson.conversation( {
   url: 'https://gateway.watsonplatform.net/conversation/api',
@@ -56,7 +57,6 @@ var weather = require('./lib/weather.js')(weatherURL);
 
 // Endpoint to be call from the client side
 app.post( '/api/message', function(req, res) {
-  var workspace = process.env.WORKSPACE_ID || vcapServices.WORKSPACE_ID;
   if ( !workspace || workspace === '<workspace-id>' ) {
     return res.json( {
       'output': {
