@@ -67,7 +67,11 @@ Ensure that you have a [Bluemix account](https://console.ng.bluemix.net/registra
 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;![](readme_images/createproject.PNG)
 
-**Note:** If the deployment fails, it might mean that you may not have a repository. To fix this, refer to the screen shots below.
+**Note:**
+ - Existing Bluemix users with Toolchain Id will see a screen like this.
+![](readme_images/WithToolchain.png)
+
+ - For users without a Toolchain Id, the deployment might fail. It might mean that the user does not have a repository. To fix this, refer to the screen shots below.
 
 ![](readme_images/ToolChain1.png)
 
