@@ -108,9 +108,9 @@ In the Details UI, copy the 36 character UNID **ID** field. This is the **WORKSP
 
 ### Adding environment variables in Bluemix
 
-1. In Bluemix, open the application from the Dashboard (you will have to click on the Application Name). Select **Environment Variables**.
+1. In Bluemix, open the application from the Dashboard (you will have to click on the Application Name). Select **Runtime** followed by the **Environment Variables** tab on the right.
 
-2. Select **USER-DEFINED**
+2. Scroll down the page to select **USER-DEFINED**
 
 3. Select **ADD**
 
