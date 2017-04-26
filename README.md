@@ -32,9 +32,9 @@ Example commands that can be executed by the Conversation service are:
     turn on windshield wipers
     find restaurants
 
-If you say *"Wipers on"* or *"I want to turn on the windshield wipers"*, the system understands that in both cases your intent is the same and responds accordingly.
+If you say *"Wipers on"* or *"I want to turn on the windshield wipers"*, the system understands that in both cases your intent is the same and responds accordingly.  
 
-![](readme_images/DeployOnBluemix-SimpleApp)
+![](readme_images/DeployOnBluemix-SimpleApp.png)
 
 ## Pre-requisities
 
@@ -53,17 +53,19 @@ Ensure that you have a [Bluemix account](https://console.ng.bluemix.net/registra
 3. Log in with your existing Bluemix account or Sign up
 
 4. Name your app and select your REGION, ORGANIZATION and SPACE. Then select DEPLOY.
+
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ![](readme_images/deploy.PNG)
 
 **Note:** If the "Space" does not get listed, please take help and create it manually
 
-5. The deploy performs two actions:
-  - deploys the app run time
-  - creates a Conversation, NLU and Weather service instances
+5. The deploy performs two actions:  
+
+    * deploys the app run time
+    * creates a Conversation, NLU and Weather service instances
 
 6. The deployment can take some time. You can see its status like the one given below:
 
-![](readme_images/createproject.PNG)
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;![](readme_images/createproject.PNG)
 
 **Note:** If the deployment fails, it might mean that you may not have a repository. To fix this, refer to the screen shots below.
 
@@ -75,11 +77,9 @@ Ensure that you have a [Bluemix account](https://console.ng.bluemix.net/registra
 
 ![](readme_images/ToolChain4.png)
 
-
 7. Once your app is deployed, select VIEW YOUR APP
 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;![](readme_images/viewyourapp.PNG)
-
 
 ### Importing a workspace
 
@@ -92,9 +92,9 @@ For more information on workspaces, see the full  [Conversation service document
 2. Go to the **Manage** menu item and select **Launch Tool**. This opens a new tab in your browser, where you are prompted to login if you have not done so before. Use your Bluemix credentials.
 
 3. Download the exported file that contains the Workspace contents by clicking [exported JSON file](https://github.com/WatsonISA/car-dashboard)
-  - navigate to the training folder to find `car-dashboard.json` file
-  - click on the "Raw" link which will open a browser
-  - Select "Save As" and save the file as a json
+    - navigate to the training folder to find `car-dashboard.json` file
+    - click on the "Raw" link which will open a browser
+    - Select "Save As" and save the file as a json
 
 4. Select the import icon: ![](readme_images/importGA.PNG). Browse to (or drag and drop) the JSON file. Choose to import **Everything(Intents, Entities, and Dialog)**. Then select **Import** to finish importing the workspace.
 
@@ -234,7 +234,7 @@ Sample JSON code:
 
 Below is the API usage architecture diagram of this application
 
-![](readme_images/architecture.jpg)
+![](readme_images/api-architecture-v2.png)
 
 Whenever the chat transcript contains a query regarding "weather" of a place, the Conversation service uses NLU to identify the entities like city / town and invokes the Weather service to get the weather details of that city / town.
 
