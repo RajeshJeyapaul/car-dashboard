@@ -246,7 +246,7 @@ You can type a query like, "what is the temperature in Bangalore today ?" and th
 
 ## License
 
-This sample code is licensed under Apache 2.0. Full license text is available in [LICENSE](https://github.com/WatsonISA/car-dashboard/blob/master/LICENSE).
+This sample code is licensed under Apache 2.0. Full license text is available in [LICENSE](LICENSE).
 
 ## Contributing
 
