@@ -1,0 +1,140 @@
+lunch @ 1130?,lunch,when
+are you going out for lunch today?,lunch,not_when
+are we doing lunch today?,lunch,not_when
+lunch plans?,lunch,not_when
+what are you doing for lunch?  i'm prob going to go grab some subway and bring it back if you want anything,lunch,not_when
+you going to lunch today?,lunch,not_when
+you guys doing lunch today?,lunch,not_when
+you guys lunching?,lunch,not_when
+you in for lunch today?,lunch,not_when
+you too... coming in for lunch?,lunch,not_when
+leave for china express @ noon?,lunch,when
+carmen's?,lunch,not_when
+anjappar ?,lunch,not_when
+moes?,lunch,not_when
+in the mood for lime today?,lunch,not_when
+We're planning for lunch on Friday- correct?,lunch,when
+so where's lunch today?,lunch,not_when
+how about north indian lunch today ?,lunch,not_when
+south indian lunch today ?,lunch,not_when
+spicy hyderabad biriyani @ noon ?,lunch,when
+bring your lunch today?,lunch,not_when
+How about Indian restaurants today ?,lunch,not_when
+How about A2B ?,lunch,not_when
+anyone heading to lunch?,lunch,not_when
+how about brixx?,lunch,not_when
+anyone want to try mediterranean today?,lunch,not_when
+greek fiesta - any objections?,lunch,not_when
+what time are we going to lunch?  i have a cube visitor,lunch,when
+Can I call?,other,not_when
+Do I need to assign a change set in order to check in?,other,not_when
+Andrew- short call?,other,not_when
+Andrew- u have extra shinguard?,other,not_when
+let's chat after I grab some lunch .. you have some time this afternoon?,other,when
+when do you want me to call in? I haven't had lunch yet,other,when
+when does the code need to fork off new processes?,other,when
+So what are you working on today?,other,not_when
+Sorry- can we move our meeting to early next week?,other,when
+You know how to find this?,other,not_when
+You used the latest code?,other,not_when
+a call ok ?,other,not_when
+actually are you free?,other,not_when
+what time?,other,when
+so is it fixed?,other,not_when
+aha ... want to try it?,other,not_when
+Hi Michael.  This is for the co-ed league?,other,not_when
+I don't know where that's specified for the tests.  Do they have a run config?,other,not_when
+I need 90 minutes on your calendar tomorrow. What can you free up?,other,when
+are you in your cube?,other,not_when
+as site admin?,other,not_when
+do you have the draft?,other,not_when
+hi Andrew- is there a schema that has some mock data in it?,other,not_when
+ok. what's your number?,other,not_when
+ok...which topic?,other,not_when
+one more ... where are these files located?,other,not_when
+which file?,other,not_when
+are we doing carpool tomorrow?,other,not_when
+1130?,lunch,when
+Andrew.. can you meet at 11:00 to go over your plan?,other,when
+Did your knee hurt all the time or only when you ran?,other,not_when
+Do you have an estimate when it will complete?,other,when
+Do you know when you started setting PARENT_LAST for classloading?,other,not_when
+When was the last time you promoted a build?,other,when
+When would you like to chat today?,other,when
+How about 3:00 today then?,other,when
+How about at about 10:45?,other,when
+I have a meeting at 4:30 ... what time are you leaving?,other,when
+I replied earlier...probably but when is your appt?,other,when
+I'm heading to the 9:00 meeting soon.. can we just pow-wow after that?,other,when
+When does the database do it's backup?,other,when
+Sure ... when is that?,other,when
+When do you need it?,other,when
+When is the upgrade?,other,when
+When is it?,other,when
+When would that run?,other,when
+When you do a build are the right versions of those scripts are extracted along with the source code?,other,not_when
+When you install the build can you update the config file as follows?,other,not_when
+andrew .. when I look at the help text .. I don't see the changes u made .. do u ?,other,not_when
+any eta on when it is going to be back up?,other,when
+any idea when and how they plan to deliver?,other,when
+are we to be there at 11:30 or leave then?,lunch,not_when
+are you  joining us for China Express (leaving at 1130)?,lunch,not_when
+are you free 1-130CT ?,other,when
+can we go the 30 minutes before or after that?,other,when
+can we try for 30 minutes from now?,other,when
+can you meet at 2:00?,other,when
+can you stop by when you get a minute?,other,when
+can you stop by when you have a chance?,other,when
+do we have a date yet for when it will be announced?,other,when
+do we have a room for the 1:30?,other,not_when
+do you get an error when you finish it?,other,not_when
+do you have a half hour sometime this afternoon?,other,when
+do you have a timetable for when that will happen?,other,when
+do you know when Joe is planning to restart the service?,other,when
+do you know when the build last ran?,other,when
+gm - when was our last good build?,other,when
+got it.  last question -- when do i have to cut over to using the new url?,other,when
+have a few mins to talk about task 15949?,other,when
+hey andrew - i'm just about to leave the house - can i ping you back around 10:30 when i get to my office at school?,other,when
+hey can you stop by when you have time?,other,when
+hi andrew.. is around 2:00 ok for some planning work ? ,other,when
+hi andrew.. sorry i was a little distracted when we had the call a bit ago . can u spare a few min to discuss ?,other,when
+how about in 30 minutes?,other,when
+i can look ... when is that meeting?,other,when
+i have back to back calls soon ... can we do it at 430?,other,when
+i need to be there @1145?,other,not_when
+i'll send you my deck - maybe meet in about 15 minutes?,other,when
+is it ok from 1.30 to 2.30 eastern?,other,when
+leave 1130?,lunch,when
+let's reschelude for 11:30?,other,when
+morning! are you free around 1:00?,other,when
+noon? I have a 1:00 ,other,when
+not now.... 45 minutes?,other,when
+ok . can we shoot for 2:30 ?? ,other,when
+ok . could u make a 10 - 10:30 ?,other,when
+ok....when are you free today?,other,when
+ok... when did you enable this?,other,when
+sure ... when will that be?,other,when
+sure - when do you want it by?,other,when
+sure - when's a good time?,other,when
+when are the games?,other,when
+when are they due?,other,when
+when did we clear it?,other,when
+when did we get this schema?,other,when
+when did you provision it?,other,when
+when did you start it?,other,when
+when do we plan on make this switch?,other,when
+when is that going to be?,other,when
+when is your next meeting?,other,when
+when?,other,when
+whens that one over?,other,when
+wondering if you would be avail for a short call at 230ct/330et?,other,when
+would 9:30AM (assuming you are on EST) your time be okay with you?,other,when
+you want to ping when it's over?,other,not_when
+yep ..did you see the trooper and the lights when you left?,other,not_when
+when you run basetests?,other,not_when
+when you run in plain java .... does it exercise that synch/loop ?,other,not_when
+when you run the ant script directly does it work for you now?,other,not_when
+when you resolve the corpus issues ... how does the team test with the new corpus?,other,not_when
+when you right click on Source Control... are you able to do the New Repository Workspace wizard?,other,not_when
+does this happen when you build and deploy?,other,not_when
